@@ -72,7 +72,7 @@ export class InfoFormComponent implements OnInit, OnChanges {
       orderDate: this.planOutput.orderDate,
       planOutputDate: this.planOutput.planOutputDate,
       planWorkingDate: this.planOutput.planWorkingDate,
-      planDeliveryDate: this.planOutput.planDeliveryDate,
+      planDeliveryDate: this.planOutput.planDeliverDate,
       createSlipType: this.planOutput.createSlipType,
       slipNo: this.planOutput.slipNo,
       planSupplierSlipNo: this.planOutput.planSupplierSlipNo,

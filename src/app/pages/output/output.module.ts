@@ -8,7 +8,8 @@ import { ListModule } from './list/list.module';
 import { OutputRoutingModule } from './output-routing.module';
 import { CoreModule } from '@core/core.module';
 import { PlanDetailModule } from './plan-detail/plan-detail.module';
-import { ActualModule } from './actual/actual.module';
+// import { ActualModule } from './actual/actual.module';
+import { ActualDetailModule } from './actual/actual-detail.module';
 
 
 
@@ -25,7 +26,8 @@ import { ActualModule } from './actual/actual.module';
     ListModule,
     OutputRoutingModule,
     PlanDetailModule,
-    ActualModule
+    // ActualModule,
+    ActualDetailModule
 
   ],
   providers: [],

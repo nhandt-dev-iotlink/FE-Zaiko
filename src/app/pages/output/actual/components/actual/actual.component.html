@@ -1,10 +1,9 @@
-<app-header class="app-header" [title]="titleActual"></app-header>
 <div style="margin-top: 43px;">
     <form [formGroup]="actualOutputForm">
         <div class="info-form">
             <div class="header-info">
                 <div class="left-side">
-                    <button class="btn btn-back">
+                    <button class="btn btn-back" (click)="navigateToOutput()">
                         <img src="./../../../../assets/plus.png" alt="" class="img-icon right-icon">
                         <!-- <mat-icon svgIcon="add"></mat-icon> -->
                         <span>戻る</span>
@@ -18,13 +17,6 @@
                         </span>
                     </div>
                     <div class="group-btn">
-                        <!-- <button class="btn is-close-btn ">
-                            contentIsClose
-                        </button>
-                        <button class="btn delete-btn">
-                            <mat-icon svgIcon="icon-delete"></mat-icon>
-                            <span>削除</span>
-                        </button> -->
                         <button class="save-btn btn ">
                             <mat-icon svgIcon="icon-save"></mat-icon>
                             <span>保存</span>
@@ -32,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form form-input">
+            <div class="form form-input" formGroupName="infoForm">
                 <!-- set 1 -->
                 <div class="row m-b-12">
                     <div class="col-lg-6 col-xs-12">
@@ -41,7 +33,7 @@
                                 <div class="group-input">
                                     <label for="">受注日</label>
                                     <div class="input-field">
-                                        <input type="date">
+                                        <input type="date" formControlName="orderDate">
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +41,7 @@
                                 <div class="group-input">
                                     <label for="">出庫予定日</label>
                                     <div class="input-field">
-                                        <input type="date">
+                                        <input type="date" formControlName="planOutputDate">
                                         <!-- <input type="date" formControlName="planOutputDate" *ngIf="planOutput"
                                          [class]="planOutput ? (outputStatus !== '出庫済' && isClose === '0' ? (infoForm.get('planOutputDate')?.status !== 'VALID' && infoForm.get('planOutputDate')?.touched ? 'border-red' : '') : ' disabled') : (infoForm.get('planOutputDate')?.status !== 'VALID' && infoForm.get('planOutputDate')?.touched ? 'border-red' : '')" -->
                                     </div>
@@ -59,7 +51,7 @@
                                 <div class="group-input">
                                     <label for="">作業予定日</label>
                                     <div class="input-field">
-                                        <input type="date">
+                                        <input type="date" formControlName="planWorkingDate">
                                         <!-- [class]="isPlanDetail ? 'disabled' : ''" -->
 
                                     </div>
@@ -69,7 +61,7 @@
                                 <div class="group-input">
                                     <label for="">納品予定日</label>
                                     <div class="input-field">
-                                        <input type="date">
+                                        <input type="date" formControlName="planDeliveryDate">
                                         <!-- [class]="isPlanDetail ? 'disabled' : ''" -->
                                     </div>
                                 </div>
@@ -82,7 +74,7 @@
                                 <div class="group-input">
                                     <label for="">伝票区分</label>
                                     <div class="input-field">
-                                        <select class="input-dialog">
+                                        <select class="input-dialog" formControlName="createSlipType">
                                             <option [value]="'0'">通常入庫（自動採番）</option>
                                             <option [value]="'1'">通常出庫（手入力）</option>
                                         </select>
@@ -93,7 +85,7 @@
                                 <div class="group-input">
                                     <label for="">伝票番号</label>
                                     <div class="input-field">
-                                        <input type="text">
+                                        <input type="text" formControlName="slipNo">
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +93,7 @@
                                 <div class="group-input">
                                     <label for="">客先伝票番号</label>
                                     <div class="input-field">
-                                        <input type="text" class="disabled">
+                                        <input type="text" formControlName="actualSupplierSlipNo" class="disabled">
                                     </div>
                                 </div>
                             </div>
@@ -114,7 +106,7 @@
                         <div class="group-input">
                             <label for="">出庫日</label>
                             <div class="input-field">
-                                <input type="date">
+                                <input type="date" formControlName="actualOutputDate">
                                 <!-- [class]="isPlanDetail ? 'disabled' : ''" -->
 
                             </div>
@@ -124,7 +116,7 @@
                         <div class="group-input">
                             <label for="">納品日</label>
                             <div class="input-field">
-                                <input type="date">
+                                <input type="date" formControlName="actualDeliverDate">
                                 <!-- [class]="isPlanDetail ? 'disabled' : ''" -->
 
                             </div>
@@ -202,12 +194,9 @@
                             <div class="input-field">
                                 <select class="input-dialog">
                                     <!-- class="{{outputStatus === '未出庫' && isClose === '0' ? '' : ' disabled'}}" -->
-                                    <!-- <option *ngFor="let repo of listRepo; let i = index" value={{repo.repositoryId}}>
+                                    <option *ngFor="let repo of listRepo; let i = index" value={{repo.repositoryId}}>
                                         {{repo.repositoryCode}}
-                                    </option> -->
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -216,14 +205,11 @@
                         <div class="group-input">
                             <label for="">ルート</label>
                             <div class="input-field">
-                                <select class="input-dialog">
+                                <select class="input-dialog" formControlName="routeCode">
                                     <!-- class="{{outputStatus === '未出庫' && isClose === '0' ? '' : ' disabled'}}" -->
-                                    <!-- <option *ngFor="let route of listRoute; let i = index" value={{route.routeCode}}>
+                                    <option *ngFor="let route of listRoute; let i = index" value={{route.routeCode}}>
                                         {{route.routeCode}} - {{route.routeName}}
-                                    </option> -->
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -234,15 +220,10 @@
                             <div class="input-field">
                                 <select class="input-dialog">
                                     <!-- class="{{outputStatus === '未出庫' && isClose === '0' ? '' : ' disabled'}}" -->
-                                    <!-- <option *ngFor="let course  of listCourse; let i = index" value={{course.courseCode}}>
+                                    <option *ngFor="let course  of listCourse; let i = index"
+                                        value={{course.courseCode}}>
                                         {{course.courseCode}} - {{course.courseName}}
-                                    </option> -->
-                                    <!-- <option *ngIf="listCourse.length === 0">
-                                        No option
-                                    </option> -->
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -401,13 +382,10 @@
                                     <td class="no-right">
                                         <div class="input-field">
                                             <select class="input-dialog">
-                                                <!-- <option *ngFor="let repo of listRepo; let i = index"
+                                                <option *ngFor="let repo of listRepo; let i = index"
                                                     value={{repo.repositoryId}}>
                                                     {{repo.repositoryCode}}
-                                                </option> -->
-                                                <option value="">1</option>
-                                                <option value="">1</option>
-                                                <option value="">1</option>
+                                                </option>
                                             </select>
                                         </div>
                                         <!-- <div class="row-input">

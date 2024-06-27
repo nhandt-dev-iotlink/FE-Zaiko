@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CommonAppModule } from '@common/common.module';
+import { ActualDetailComponent } from './actual-detail.component';
 import { LayoutModule } from "../../../layout/layout.module";
-import { ActualComponent } from './actual.component';
+import { ActualComponent } from './components/actual/actual.component';
 
 
 
 @NgModule({
-  declarations: [
-    ActualComponent
-  ],
+  declarations: [ActualDetailComponent, ActualComponent],
   imports: [
     CommonModule,
     CommonAppModule.forRoot(),
-    LayoutModule
+    LayoutModule,
   ]
 })
-export class ActualModule { }
+export class ActualDetailModule { }

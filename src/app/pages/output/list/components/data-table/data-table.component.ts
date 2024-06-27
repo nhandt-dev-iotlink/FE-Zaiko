@@ -6,7 +6,7 @@ import { LanguageService } from '@core/services';
 import { LoadingSpinnerDialogService } from '@layout/services/loading-spinner-dialog.service';
 import { DataSearchModel } from '@core/models';
 import { Router } from '@angular/router';
-import { PlanOutputDetailNumberService } from 'src/app/pages/common/services/plan-output-detail-number.service';
+import { OutputDetailNumberService } from 'src/app/pages/common/services/output-detail-number.service';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class DataTableComponent implements OnInit, OnChanges {
     private router: Router,
     private outputService: OutputService,
     private loadingDialog: LoadingSpinnerDialogService,
-    private planOuputDetailNumberService: PlanOutputDetailNumberService
+    private ouputDetailNumberService: OutputDetailNumberService
   ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -78,9 +78,12 @@ export class DataTableComponent implements OnInit, OnChanges {
     })
   }
   public navigateToPlan(value: any) {
-    this.planOuputDetailNumberService.setSelectedRecordId(value);
+    this.ouputDetailNumberService.setSelectedRecordId(value);
     this.router.navigate(['/output/plan']);
-    // this.router.navigate(['/output/plan'], { queryParams: { data: data } });
+  }
+  public navigateToActual(value: any) {
+    this.ouputDetailNumberService.setSelectedRecordId(value);
+    this.router.navigate(['/output/actual']);
   }
 
   public getCollorOutputStatus(status: string = '0'): string {

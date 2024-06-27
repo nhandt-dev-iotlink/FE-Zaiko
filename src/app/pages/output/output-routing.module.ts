@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { OutputComponent } from './output.component';
 import { ListComponent } from './list/list.component';
 import { PlanDetailComponent } from './plan-detail/plan-detail.component';
-import { ActualComponent } from './actual/actual.component';
+import { ActualDetailComponent } from './actual/actual-detail.component';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'lists' },
@@ -11,7 +11,7 @@ const routes: Routes = [
         path: '', component: OutputComponent, children: [
             { path: 'lists', component: ListComponent },
             { path: 'plan', component: PlanDetailComponent },
-            { path: 'actual', component: ActualComponent },
+            { path: 'actual', component: ActualDetailComponent },
         ]
     },
 ];

@@ -126,7 +126,8 @@ export const ApiPathConfig = {
   },
   delivery: {
     inventoryOutput: '/api/inventory-output',
-    inventoryOutput_Plan: '/api/inventory-output/plan',
+    inventoryOutput_plan: '/api/inventory-output/plan',
+    inventoryOutput_actual: '/api/inventory-output/actual',
     salePrice: '/api/sale-price-by-date',
     salePriceFromTo: '/api/sale-price-by-date-from-to',
     createInventoryOutput: '/api/inventory-output-plan',

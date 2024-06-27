@@ -7,7 +7,7 @@ export interface OutputDetail {
     orderDate: string;
     planOutputDate: string;
     planWorkingDate: string;
-    planDeliveryDate: string;
+    planDeliverDate: string;
     actualOutputDate: string;
     actualDeliverDate: string;
     createSlipType: string;

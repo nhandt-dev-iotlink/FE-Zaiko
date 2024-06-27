@@ -8,8 +8,6 @@ import { LayoutModule } from '@layout/layout.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { OutputModule } from './pages/output/output.module';
-import { InputModule } from './pages/input/input.module';
 
 @NgModule({
   declarations: [
@@ -29,8 +27,6 @@ import { InputModule } from './pages/input/input.module';
       timeOut: 3000,
       positionClass: 'toast-top-right'
     }),
-    // OutputModule,
-    // InputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,11 @@
+@import './../../../../../src/styles/styles-variables.scss';
+$width-nav-bar: 70px;
+
+
+.app-header {
+    height: 40px;
+    // width: 100%;
+    width: calc(100% - $width-nav-bar - 8px);
+    position: fixed;
+    z-index: 1020;
+}

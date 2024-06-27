@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PlanOutputDetailNumberService } from '../../common/services/plan-output-detail-number.service'
 import { Observable, Subscription } from 'rxjs';
 import { PlanDetailService } from './services/plan-detail.service';
 import { LoadingSpinnerDialogService } from '@layout/services';
@@ -8,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Title } from '@layout/models/title.model';
 import { PlanOutputDetail } from './model/plan-output-detail.model';
 import { OutputDetail } from '../../common/models/output-detail.model';
+import { OutputDetailNumberService } from '../../common/services/output-detail-number.service';
 
 @Component({
   selector: 'app-plan-detail',
@@ -20,12 +20,11 @@ export class PlanDetailComponent implements OnInit, OnDestroy {
   public titlePlan!: Title;
 
 
-  selectedRecordId!: Observable<number | null>;
+  private selectedRecordId!: Observable<number | null>;
   private subscription!: Subscription;
 
   constructor(
-    private route: ActivatedRoute,
-    private planOuputDetailNumberService: PlanOutputDetailNumberService,
+    private ouputDetailNumberService: OutputDetailNumberService,
     private planDetailService: PlanDetailService,
     private loadingDialog: LoadingSpinnerDialogService,
   ) { }
@@ -44,7 +43,7 @@ export class PlanDetailComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initialTitle();
     // this.loadingDialog.showSpinner(true);
-    this.selectedRecordId = this.planOuputDetailNumberService.getSelectedRecordId();
+    this.selectedRecordId = this.ouputDetailNumberService.getSelectedRecordId();
     this.subscription = this.selectedRecordId.subscribe((id) => {
       if (id !== null) {
         this.getPlanOutput(id);

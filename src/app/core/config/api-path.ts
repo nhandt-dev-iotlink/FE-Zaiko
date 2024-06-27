@@ -119,7 +119,8 @@ export class ApiPath {
 
   //DELIVERY INVENTORY OUTPUT
   public static INVENTORY_OUTPUT = environment.API_SERVICE.concat(ApiPathConfig.delivery.inventoryOutput);
-  public static INVENTORY_OUTPUTPLAN = environment.API_SERVICE.concat(ApiPathConfig.delivery.inventoryOutput_Plan);
+  public static INVENTORY_OUTPUTPLAN = environment.API_SERVICE.concat(ApiPathConfig.delivery.inventoryOutput_plan);
+  public static INVENTORY_OUTPUTACTUAL = environment.API_SERVICE.concat(ApiPathConfig.delivery.inventoryOutput_actual);
   public static SALE_PRICE = environment.API_SERVICE.concat(ApiPathConfig.delivery.salePrice);
   public static SALE_PRICE_FROM_TO = environment.API_SERVICE.concat(ApiPathConfig.delivery.salePriceFromTo);
   public static CREATE_INVENTORY_OUTPUT = environment.API_SERVICE.concat(ApiPathConfig.delivery.createInventoryOutput);

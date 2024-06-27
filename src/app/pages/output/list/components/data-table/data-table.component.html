@@ -135,7 +135,8 @@
                     </td>
                     <td class="text-center">
                         <button class="btn btn-actual"
-                            [class.disabled]="(!output.planOutputDate && !output.actualOutputDate) || output.isClosed === '1'">
+                            [class.disabled]="!output.planOutputDate || output.isClosed === '1'"
+                            (click)="navigateToActual(output.inventoryOutputId)">
                             実績
                         </button>
                     </td>

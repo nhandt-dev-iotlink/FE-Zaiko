@@ -4,14 +4,14 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class PlanOutputDetailNumberService {
+export class OutputDetailNumberService {
 
   // Lưu giá trị inventoryOutputId của record
 
   private recordId = new BehaviorSubject<number | null>(null);
 
   constructor() {
-    // Kiểm tra xem có giá trị đã lưu trữ trong LocalStorage không
+    // Kiểm tra xem có giá trị đã lưu trữ trong SessionStorage không
     const savedValue = sessionStorage.getItem('myBehaviorSubjectValue');
     if (savedValue) {
       this.recordId.next(Number(savedValue));
@@ -20,7 +20,7 @@ export class PlanOutputDetailNumberService {
 
   setSelectedRecordId(id: number) {
     this.recordId.next(id);
-    // Lưu trữ giá trị mới vào LocalStorage
+    // Lưu trữ giá trị mới vào SessionStorage
     sessionStorage.setItem('myBehaviorSubjectValue', JSON.stringify(id));
   }
   removeSelectedRecordId() {

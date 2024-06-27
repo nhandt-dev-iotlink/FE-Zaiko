@@ -2,7 +2,6 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { Router } from '@angular/router';
 import { createFormGroup } from 'src/app/pages/config/form-group.config';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { PlanOutputDetailNumberService } from 'src/app/pages/common/services/plan-output-detail-number.service';
 import { LoadingSpinnerDialogService } from '@layout/services';
 import { RepositoryService } from 'src/app/pages/common/services/repository.service';
 import { CourseService } from 'src/app/pages/common/services/course.service';
@@ -28,6 +27,7 @@ import { DialogConfirmService } from '@common/services/dialog-confirm.service';
 import { ToastrService } from 'ngx-toastr';
 import { LanguageService } from '@core/services';
 import { OutputDetail } from 'src/app/pages/common/models/output-detail.model';
+import { OutputDetailNumberService } from 'src/app/pages/common/services/output-detail-number.service';
 
 @Component({
   selector: 'app-plan',
@@ -67,7 +67,7 @@ export class PlanComponent implements OnInit, OnChanges {
   constructor(
     private planDetailService: PlanDetailService,
     private router: Router,
-    private planOuputDetailNumberService: PlanOutputDetailNumberService,
+    private ouputDetailNumberService: OutputDetailNumberService,
     private fb: FormBuilder,
     private loadingDialog: LoadingSpinnerDialogService,
     private repoService: RepositoryService,
@@ -100,7 +100,7 @@ export class PlanComponent implements OnInit, OnChanges {
   }
 
   public navigateToOutput() {
-    this.planOuputDetailNumberService.removeSelectedRecordId();
+    this.ouputDetailNumberService.removeSelectedRecordId();
     this.router.navigate(['/output']);
   }
 
@@ -122,25 +122,8 @@ export class PlanComponent implements OnInit, OnChanges {
       for (let i = 0; i < this.pagePlanOutputDetail.length - 1; i++) {
         this.addDetailGroup();
       }
-      console.log(this.detailForm.value);
-      console.log(this.detailFormAtIndex(2).get('locationId')?.value);
       this.detailForm.patchValue(this.pagePlanOutputDetail);
-      console.log(this.detailForm.value);
-      console.log(this.detailFormAtIndex(2).get('locationId')?.value);
-      console.log(this.locationArray);
-
     }
-
-    // if(this.infoForm ){
-    //   this.planOutputForm.valueChanges.subscribe(value => {
-    //     console.log((value));
-    //     console.log(
-    //       this.statusPlanDate
-    //     );
-    //     console.log(this.outputStatus);
-    //     console.log(this.isClose);
-    //   })
-    // }
   }
 
   public deleteInventoryOutput() {
@@ -186,15 +169,6 @@ export class PlanComponent implements OnInit, OnChanges {
 
     const infoFormValue = this.infoForm;
 
-    // this.infoForm.statusChanges.subscribe((status) => {
-    //   console.log(status);
-    //   console.log(this.infoForm.get('slipNo')?.errors);
-
-    // })
-    // this.detailForm.statusChanges.subscribe((status) => {
-    //   console.log(status);
-
-    // })
     infoFormValue.get('isClosed')?.valueChanges.subscribe(value => {
       this.setIsPlanDetail();
       this.setStatusPlanDate();
@@ -329,7 +303,7 @@ export class PlanComponent implements OnInit, OnChanges {
     let planForm: PlanOutputForm;
     planForm = this.planOutputForm.getRawValue();
     planForm.infoForm.orderDate = planForm.infoForm.orderDate.replace(/-/g, '/');
-    planForm.infoForm.planDeliveryDate = planForm.infoForm.planDeliveryDate.replace(/-/g, '/');
+    planForm.infoForm.planDeliverDate = planForm.infoForm.planDeliverDate.replace(/-/g, '/');
     planForm.infoForm.planOutputDate = planForm.infoForm.planOutputDate.replace(/-/g, '/');
     planForm.infoForm.planWorkingDate = planForm.infoForm.planWorkingDate.replace(/-/g, '/');
     planForm.detailForm.forEach((detail) => {
@@ -402,18 +376,7 @@ export class PlanComponent implements OnInit, OnChanges {
       }
     })
   }
-  public getListCourse() {
-    this.courseService.getListCourse().subscribe(res => {
-      if (res instanceof HttpErrorResponse) {
-        console.log("Error: List Course is Empty!");
-        return;
-      }
-      else {
-        this.listCourse = res.data;
-        return;
-      }
-    })
-  }
+
   public getListCourseByRoute(code: string) {
     this.courseService.getListCourseByRoute(code).subscribe(res => {
       if (res instanceof HttpErrorResponse) {
@@ -505,7 +468,6 @@ export class PlanComponent implements OnInit, OnChanges {
           form.get('customerName')?.disable();
 
         } else {
-          // form.get('destinationCode')?.setValue(code);
           form.get('customerName')?.enable();
           form.get('customerName')?.setValue(null);
           form.get('customerName')?.setErrors({ required: true });

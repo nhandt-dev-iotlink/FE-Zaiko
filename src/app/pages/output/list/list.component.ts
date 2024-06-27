@@ -2,7 +2,7 @@ import { Component, OnInit, } from '@angular/core';
 import { IconService } from '@core/services/icon/icon.service';
 import { OuputSearch } from './model/output-list.model';
 import { Title } from '@layout/models/title.model';
-import { PlanOutputDetailNumberService } from '../../common/services/plan-output-detail-number.service';
+import { OutputDetailNumberService } from '../../common/services/output-detail-number.service';
 
 @Component({
   selector: 'app-list',
@@ -23,11 +23,11 @@ export class ListComponent implements OnInit {
 
   constructor(
     private icon: IconService,
-    private planOuputDetailNumberService: PlanOutputDetailNumberService,
+    private ouputDetailNumberService: OutputDetailNumberService,
   ) { }
 
   ngOnInit(): void {
-    this.planOuputDetailNumberService.removeSelectedRecordId();
+    this.ouputDetailNumberService.removeSelectedRecordId();
     this.icon.init();
     this.initialTitle();
   }

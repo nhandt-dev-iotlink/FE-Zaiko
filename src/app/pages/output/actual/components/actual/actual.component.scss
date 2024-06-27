@@ -1,14 +1,4 @@
-@import './../../../../../src/styles/styles-variables.scss';
-$width-nav-bar: 70px;
-
-
-.app-header {
-    height: 40px;
-    // width: 100%;
-    width: calc(100% - $width-nav-bar - 8px);
-    position: fixed;
-    z-index: 1020;
-}
+@import './../../../../../../styles/styles-variables.scss';
 
 .info-form {
     background-color: #F9FCFF;
@@ -210,22 +200,6 @@ $width-nav-bar: 70px;
                     border-color: #D6D6D6;
                     background-color: #EFEDFF;
                 }
-
-                // input {
-                //     border-radius: 2px;
-                //     border: 1px solid #D6D6D6;
-                //     border-color: #D6D6D6;
-                // }
-
-                // input[type="checkbox"] {
-                //     border: 1px solid #D6D6D6;
-                //     border-color: #D6D6D6;
-                //     background-color: #EFEDFF;
-                // }
-
-                // input[type="checkbox"].disabled {
-                //     background-color: red;
-                // }
             }
 
 
@@ -313,8 +287,7 @@ $width-nav-bar: 70px;
                     -webkit-appearance: none;
                     -moz-appearance: none;
                     appearance: none;
-                    // background-image: url(../../../../../../assets//icon-svg/caret-down-blue.svg);
-                    background-image: url(../../../../assets/icon-svg/caret-down-blue.svg);
+                    background-image: url(../../../../../../assets/icon-svg/caret-down-blue.svg);
                     background-repeat: no-repeat;
                     background-position: right 0.5em top 50%;
                     background-size: .65em auto;
@@ -323,7 +296,7 @@ $width-nav-bar: 70px;
 
                 select.disabled {
                     // background-image: url(../../../../../../assets/icon-svg/caret-down.svg);
-                    background-image: url(../../../../assets/icon-svg/caret-down.svg);
+                    background-image: url(../../../../../../assets/icon-svg/caret-down.svg);
                     background-color: #F2F2F2;
                     opacity: 1;
                     pointer-events: none;
@@ -928,7 +901,7 @@ $width-nav-bar: 70px;
 
 
                 select.disabled {
-                    background-image: url(../../../../assets/icon-svg/caret-down.svg);
+                    background-image: url(../../../../../../assets/icon-svg/caret-down.svg);
                     background-color: #F2F2F2;
                     opacity: 1;
                     pointer-events: none;
@@ -1014,7 +987,7 @@ $width-nav-bar: 70px;
                     -webkit-appearance: none;
                     -moz-appearance: none;
                     appearance: none;
-                    background-image: url(../../../../assets//icon-svg/caret-down-blue.svg);
+                    background-image: url(../../../../../../assets/icon-svg/caret-down-blue.svg);
                     background-repeat: no-repeat;
                     background-position: right 0.5em top 50%;
                     background-size: .65em auto;
@@ -1022,7 +995,7 @@ $width-nav-bar: 70px;
                 }
 
                 select.disabled {
-                    background-image: url(../../../../assets/icon-svg/caret-down.svg);
+                    background-image: url(../../../../../../assets/icon-svg/caret-down.svg);
                     background-color: #F2F2F2;
                     opacity: 1;
                     pointer-events: none;
